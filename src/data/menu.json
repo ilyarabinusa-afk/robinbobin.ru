@@ -57,7 +57,7 @@
     {
       "id": 7,
       "name": "Снекбокс",
-      "description": "Набор снеков в коробке — идеально для перекуса. В коробке",
+      "description": "Набор снеков в фирменной коробке — идеально для перекуса",
       "price": 405,
       "category": "snacks",
       "image": "/images/menu/snackbox.jpg"
@@ -65,7 +65,7 @@
     {
       "id": 8,
       "name": "Ланчбокс с Фри",
-      "description": "Сытный ланчбокс с картофелем фри. В коробке",
+      "description": "Сытный ланчбокс с картофелем фри в фирменной коробке",
       "price": 388,
       "category": "snacks",
       "image": "/images/menu/lunchbox.jpg"
@@ -73,7 +73,7 @@
     {
       "id": 9,
       "name": "Чикен-Чиз",
-      "description": "Нежное куриное филе с сыром в хрустящем лаваше. В лаваше",
+      "description": "Шаурма с куриным филе и расплавленным сыром в лаваше",
       "price": 238,
       "category": "snacks",
       "image": "/images/menu/chicken-cheese.jpg"
@@ -81,7 +81,7 @@
     {
       "id": 10,
       "name": "Чикен бокс",
-      "description": "Кусочки куриного филе в хрустящей панировке. В коробке",
+      "description": "Кусочки куриного филе в хрустящей панировке в фирменной коробке",
       "price": 297,
       "category": "snacks",
       "image": "/images/menu/chicken-box.jpg"

@@ -18,51 +18,119 @@ function App() {
   const [successOpen, setSuccessOpen] = useState(false)
 
   useEffect(() => {
+    // Skip animations for screenshot mode
+    if (window.location.search.includes('nogsap')) return
+
     async function initGsap() {
       const gsap = (await import('gsap')).default
       const { ScrollTrigger } = await import('gsap/ScrollTrigger')
       gsap.registerPlugin(ScrollTrigger)
 
-      // Hero entrance
-      const tl = gsap.timeline({ delay: 0.3 })
-      tl.from('.hero-logo', { y: -60, opacity: 0, duration: 1, ease: 'back.out(1.7)' })
-        .from('.hero-tagline', { y: 30, opacity: 0, duration: 0.6, stagger: 0.15 }, '-=0.4')
-        .from('.hero-cta', { scale: 0.8, opacity: 0, duration: 0.5, ease: 'back.out(2)' }, '-=0.2')
+      // Hero entrance — dramatic staggered reveal
+      const heroTl = gsap.timeline({ delay: 0.2 })
+      heroTl
+        .from('.hero-blob', { scale: 0, opacity: 0, duration: 1.5, stagger: 0.2, ease: 'power2.out' })
+        .from('.hero-logo', { y: -100, opacity: 0, duration: 1.2, ease: 'back.out(1.7)' }, 0.3)
+        .from('.hero-float', { opacity: 0, scale: 0, duration: 0.8, stagger: 0.1, ease: 'back.out(2)' }, 0.6)
+        .from('.hero-tagline', { y: 40, opacity: 0, duration: 0.7, stagger: 0.2, ease: 'power3.out' }, '-=0.5')
+        .from('.hero-cta', { y: 30, opacity: 0, duration: 0.6, stagger: 0.15, ease: 'back.out(1.5)' }, '-=0.3')
 
-      // Section titles
+      // Floating food icons — continuous slow movement
+      gsap.utils.toArray('.hero-float').forEach((el, i) => {
+        gsap.to(el, {
+          y: `${(i % 2 === 0 ? -1 : 1) * 20}`,
+          rotation: (i % 2 === 0 ? 5 : -5),
+          duration: 3 + i * 0.5,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut'
+        })
+      })
+
+      // Background blobs — slow drift
+      gsap.utils.toArray('.hero-blob').forEach((el, i) => {
+        gsap.to(el, {
+          x: `${(i % 2 === 0 ? 1 : -1) * 30}`,
+          y: `${(i % 2 === 0 ? -1 : 1) * 20}`,
+          duration: 6 + i * 2,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut'
+        })
+      })
+
+      // Section titles — slide up with scale
       gsap.utils.toArray('.section-title').forEach(el => {
         gsap.from(el, {
-          y: 40, opacity: 0, duration: 0.8, ease: 'power3.out',
+          y: 60, opacity: 0, scale: 0.9, duration: 0.8, ease: 'power3.out',
           scrollTrigger: { trigger: el, start: 'top 85%' }
         })
       })
 
-      // Menu cards
-      ScrollTrigger.batch('.menu-card', {
-        onEnter: batch => gsap.to(batch, {
-          opacity: 1, y: 0, stagger: 0.08, duration: 0.6, ease: 'power2.out', overwrite: true
-        }),
-        start: 'top 88%'
+      // Section subtitles
+      gsap.utils.toArray('.section-sub').forEach(el => {
+        gsap.from(el, {
+          y: 30, opacity: 0, duration: 0.6, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' }
+        })
       })
-      gsap.set('.menu-card', { opacity: 0, y: 40 })
 
-      // Review cards
-      ScrollTrigger.batch('.review-card', {
-        onEnter: batch => gsap.to(batch, {
-          opacity: 1, y: 0, stagger: 0.1, duration: 0.6, ease: 'power2.out', overwrite: true
-        }),
-        start: 'top 88%'
+      // Category tabs — fade in from left
+      gsap.from('.category-tabs', {
+        x: -40, opacity: 0, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: '.category-tabs', start: 'top 88%' }
       })
-      gsap.set('.review-card', { opacity: 0, y: 30 })
 
-      // Contact cards
-      ScrollTrigger.batch('.contact-card', {
-        onEnter: batch => gsap.to(batch, {
-          opacity: 1, y: 0, stagger: 0.1, duration: 0.6, ease: 'power2.out', overwrite: true
-        }),
-        start: 'top 88%'
+      // Menu cards — staggered batch with scale (use gsap.from so visible by default)
+      gsap.utils.toArray('.menu-card').forEach(card => {
+        gsap.from(card, {
+          opacity: 0, y: 60, scale: 0.9, duration: 0.7, ease: 'back.out(1.2)',
+          scrollTrigger: { trigger: card, start: 'top 92%' }
+        })
       })
-      gsap.set('.contact-card', { opacity: 0, y: 30 })
+
+      // Review cards — staggered with rotation
+      gsap.utils.toArray('.review-card').forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0, y: 50, rotation: -2, duration: 0.7, ease: 'power3.out',
+          delay: i * 0.1,
+          scrollTrigger: { trigger: card, start: 'top 90%' }
+        })
+      })
+
+      // Contact cards — pop in with scale
+      gsap.utils.toArray('.contact-card').forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0, y: 40, scale: 0.85, duration: 0.6, ease: 'back.out(1.5)',
+          delay: i * 0.12,
+          scrollTrigger: { trigger: card, start: 'top 90%' }
+        })
+      })
+
+      // About section — split reveal (text from left, image from right)
+      const aboutSection = document.querySelector('#about')
+      if (aboutSection) {
+        gsap.from('#about .order-2, #about .order-1:first-child', {
+          x: -60, opacity: 0, duration: 1, ease: 'power3.out',
+          scrollTrigger: { trigger: aboutSection, start: 'top 75%' }
+        })
+        gsap.from('#about .order-1:last-child, #about .order-2:last-child', {
+          x: 60, opacity: 0, duration: 1, ease: 'power3.out',
+          scrollTrigger: { trigger: aboutSection, start: 'top 75%' }
+        })
+      }
+
+      // Footer — fade up
+      gsap.from('footer', {
+        y: 40, opacity: 0, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: 'footer', start: 'top 95%' }
+      })
+
+      // Parallax on hero — subtle scroll movement
+      gsap.to('.hero-logo', {
+        yPercent: 30, ease: 'none',
+        scrollTrigger: { trigger: '.hero-logo', start: 'top top', end: 'bottom top', scrub: true }
+      })
     }
 
     async function initLenis() {

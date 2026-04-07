@@ -13,8 +13,8 @@ export default function Header({ totalItems, onCartClick }) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-header">
       <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
-        <a href="#" className="font-heading font-black text-2xl text-accent tracking-tight">
-          робин•бобин
+        <a href="#" className="text-2xl text-accent" style={{ fontFamily: '"Boogaloo", cursive', WebkitTextStroke: '1px #1A1A1A', paintOrder: 'stroke fill' }}>
+          робин<span className="text-green">•</span>бобин
         </a>
 
         <nav className="hidden md:flex gap-6">
