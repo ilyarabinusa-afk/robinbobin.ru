@@ -23,8 +23,6 @@ function App() {
 
     async function initGsap() {
       const gsap = (await import('gsap')).default
-      const { ScrollTrigger } = await import('gsap/ScrollTrigger')
-      gsap.registerPlugin(ScrollTrigger)
 
       // Hero entrance — dramatic staggered reveal
       const heroTl = gsap.timeline({ delay: 0.2 })
@@ -58,80 +56,39 @@ function App() {
           ease: 'sine.inOut'
         })
       })
+    }
 
-      // Section titles — slide up with scale
-      gsap.utils.toArray('.section-title').forEach(el => {
-        gsap.from(el, {
-          y: 60, opacity: 0, scale: 0.9, duration: 0.8, ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 85%' }
+    // Scroll reveal via IntersectionObserver (reliable, no GSAP dependency)
+    function initScrollReveal() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed')
+            observer.unobserve(entry.target)
+          }
         })
-      })
+      }, { threshold: 0.1 })
 
-      // Section subtitles
-      gsap.utils.toArray('.section-sub').forEach(el => {
-        gsap.from(el, {
-          y: 30, opacity: 0, duration: 0.6, ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 88%' }
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+    }
+
+    // Add reveal class to animatable elements
+    function markRevealElements() {
+      const selectors = [
+        '.section-title', '.section-sub', '.category-tabs',
+        '.menu-card', '.review-card', '.contact-card',
+        '#about > div > div', 'footer'
+      ]
+      selectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach((el, i) => {
+          el.classList.add('reveal')
+          el.style.transitionDelay = `${i * 0.08}s`
         })
-      })
-
-      // Category tabs — fade in from left
-      gsap.from('.category-tabs', {
-        x: -40, opacity: 0, duration: 0.8, ease: 'power2.out',
-        scrollTrigger: { trigger: '.category-tabs', start: 'top 88%' }
-      })
-
-      // Menu cards — staggered batch with scale (use gsap.from so visible by default)
-      gsap.utils.toArray('.menu-card').forEach(card => {
-        gsap.from(card, {
-          opacity: 0, y: 60, scale: 0.9, duration: 0.7, ease: 'back.out(1.2)',
-          scrollTrigger: { trigger: card, start: 'top 92%' }
-        })
-      })
-
-      // Review cards — staggered with rotation
-      gsap.utils.toArray('.review-card').forEach((card, i) => {
-        gsap.from(card, {
-          opacity: 0, y: 50, rotation: -2, duration: 0.7, ease: 'power3.out',
-          delay: i * 0.1,
-          scrollTrigger: { trigger: card, start: 'top 90%' }
-        })
-      })
-
-      // Contact cards — pop in with scale
-      gsap.utils.toArray('.contact-card').forEach((card, i) => {
-        gsap.from(card, {
-          opacity: 0, y: 40, scale: 0.85, duration: 0.6, ease: 'back.out(1.5)',
-          delay: i * 0.12,
-          scrollTrigger: { trigger: card, start: 'top 90%' }
-        })
-      })
-
-      // About section — split reveal (text from left, image from right)
-      const aboutSection = document.querySelector('#about')
-      if (aboutSection) {
-        gsap.from('#about .order-2, #about .order-1:first-child', {
-          x: -60, opacity: 0, duration: 1, ease: 'power3.out',
-          scrollTrigger: { trigger: aboutSection, start: 'top 75%' }
-        })
-        gsap.from('#about .order-1:last-child, #about .order-2:last-child', {
-          x: 60, opacity: 0, duration: 1, ease: 'power3.out',
-          scrollTrigger: { trigger: aboutSection, start: 'top 75%' }
-        })
-      }
-
-      // Footer — fade up
-      gsap.from('footer', {
-        y: 40, opacity: 0, duration: 0.8, ease: 'power2.out',
-        scrollTrigger: { trigger: 'footer', start: 'top 95%' }
-      })
-
-      // Parallax on hero — subtle scroll movement
-      gsap.to('.hero-logo', {
-        yPercent: 30, ease: 'none',
-        scrollTrigger: { trigger: '.hero-logo', start: 'top top', end: 'bottom top', scrub: true }
       })
     }
+
+    markRevealElements()
+    initScrollReveal()
 
     async function initLenis() {
       try {
