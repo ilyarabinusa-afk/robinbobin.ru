@@ -28,8 +28,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://t.me/robinbobin_chel" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                  Telegram
+                <a href="https://t.me/Robon_Bobin_bot" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  Telegram @Robon_Bobin_bot
                 </a>
               </li>
             </ul>

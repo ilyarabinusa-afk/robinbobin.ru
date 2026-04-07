@@ -75,7 +75,7 @@
       "name": "Чикен-Чиз",
       "description": "Шаурма с куриным филе и расплавленным сыром в лаваше",
       "price": 238,
-      "category": "snacks",
+      "category": "shawarma",
       "image": "/images/menu/chicken-cheese.jpg"
     },
     {
@@ -130,7 +130,7 @@
   ],
   "contacts": {
     "email": "order@robinbobin.ru",
-    "telegram": "https://t.me/robinbobin_chel",
+    "telegram": "https://t.me/Robon_Bobin_bot",
     "telegramAdminChatId": "183921686"
   }
 }

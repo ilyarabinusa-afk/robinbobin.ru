@@ -1,34 +1,40 @@
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* Animated background blobs */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="hero-blob absolute -top-20 -left-20 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
-        <div className="hero-blob absolute top-1/3 -right-20 w-96 h-96 bg-yellow/10 rounded-full blur-3xl" />
-        <div className="hero-blob absolute -bottom-20 left-1/3 w-72 h-72 bg-green/5 rounded-full blur-3xl" />
-      </div>
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16 pb-8">
+      {/* Background — bright, no fog */}
+      <div className="absolute inset-0 bg-gradient-to-b from-yellow/20 via-accent/5 to-background" />
 
-      {/* Floating food icons */}
+      {/* Floating food icons — visible, not faded */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <span className="hero-float absolute text-5xl md:text-6xl top-[15%] left-[8%] opacity-20">🍔</span>
-        <span className="hero-float absolute text-4xl md:text-5xl top-[25%] right-[10%] opacity-15">🌯</span>
-        <span className="hero-float absolute text-5xl md:text-6xl bottom-[25%] left-[12%] opacity-15">🍟</span>
-        <span className="hero-float absolute text-4xl md:text-5xl bottom-[20%] right-[8%] opacity-20">☕</span>
-        <span className="hero-float absolute text-3xl top-[45%] left-[3%] opacity-10">🌶️</span>
-        <span className="hero-float absolute text-3xl top-[10%] right-[25%] opacity-10">🧀</span>
+        <span className="hero-float absolute text-5xl md:text-7xl top-[12%] left-[6%] opacity-60">🍔</span>
+        <span className="hero-float absolute text-4xl md:text-6xl top-[18%] right-[8%] opacity-50">🌯</span>
+        <span className="hero-float absolute text-5xl md:text-7xl bottom-[22%] left-[10%] opacity-50">🍟</span>
+        <span className="hero-float absolute text-4xl md:text-6xl bottom-[18%] right-[6%] opacity-60">☕</span>
+        <span className="hero-float absolute text-3xl md:text-5xl top-[40%] left-[2%] opacity-40">🌶️</span>
+        <span className="hero-float absolute text-3xl md:text-5xl top-[8%] right-[22%] opacity-40">🧀</span>
       </div>
 
       <div className="relative z-10 text-center px-4 md:px-8 max-w-4xl mx-auto">
-        {/* Logo in bubble font */}
-        <div className="hero-logo mb-6">
-          <h1 className="leading-none">
+        {/* Logo image if exists, fallback to text */}
+        <div className="hero-logo mb-8">
+          <img
+            src="/images/logo.png"
+            alt="Робин Бобин"
+            className="mx-auto h-24 sm:h-32 md:h-40 lg:h-48 w-auto"
+            onError={(e) => {
+              e.target.style.display = 'none'
+              e.target.nextElementSibling.style.display = 'block'
+            }}
+          />
+          <h1
+            className="hidden leading-none"
+          >
             <span
               className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-accent inline-block"
               style={{
                 fontFamily: '"Boogaloo", cursive',
                 WebkitTextStroke: '1.5px #1A1A1A',
                 paintOrder: 'stroke fill',
-                letterSpacing: '-0.02em',
               }}
             >
               робин
@@ -38,11 +44,21 @@ export default function Hero() {
           </h1>
         </div>
 
-        <p className="hero-tagline font-heading font-bold text-xl md:text-3xl text-primary/80 mb-4">
+        {/* Mascot */}
+        <div className="hero-mascot mb-6">
+          <img
+            src="/images/mascot.png"
+            alt="Маскот Робин Бобин"
+            className="mx-auto h-32 md:h-44 w-auto drop-shadow-lg"
+            onError={(e) => { e.target.style.display = 'none' }}
+          />
+        </div>
+
+        <p className="hero-tagline font-heading font-bold text-2xl md:text-4xl text-primary mb-3">
           Вкусно. Быстро. По-домашнему!
         </p>
 
-        <p className="hero-tagline text-secondary text-base md:text-lg mb-10 max-w-lg mx-auto">
+        <p className="hero-tagline text-secondary text-base md:text-lg mb-8 max-w-lg mx-auto">
           Бургеры, шаурма и закуски с душой. Закажи на самовывоз — заберёшь горячим!
         </p>
 
@@ -64,8 +80,6 @@ export default function Hero() {
           </a>
         </div>
       </div>
-
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   )
 }

@@ -25,11 +25,25 @@ export default function About() {
             </div>
           </div>
           <div className="order-1 md:order-2">
-            <div className="aspect-square rounded-3xl bg-gradient-to-br from-accent/10 via-yellow/20 to-green/10 flex items-center justify-center overflow-hidden">
-              <div className="text-center p-8">
-                <div className="text-8xl md:text-9xl mb-4">🍔</div>
-                <p className="font-heading font-bold text-2xl text-primary/40">3 точки в Челябинске</p>
-              </div>
+            <div className="aspect-square rounded-3xl bg-gradient-to-br from-accent/5 via-yellow/15 to-green/5 flex flex-col items-center justify-center overflow-hidden p-8">
+              {/* Mascot */}
+              <img
+                src="/images/mascot.png"
+                alt="Маскот Робин Бобин"
+                className="h-40 md:h-56 w-auto mb-4 drop-shadow-lg"
+                onError={(e) => {
+                  e.target.style.display = 'none'
+                }}
+              />
+              {/* Logo */}
+              <img
+                src="/images/logo.png"
+                alt="Робин Бобин"
+                className="h-12 md:h-16 w-auto"
+                onError={(e) => {
+                  e.target.outerHTML = '<p class="font-heading font-bold text-2xl text-primary/40">3 точки в Челябинске</p>'
+                }}
+              />
             </div>
           </div>
         </div>
