@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.agents/
+.claude/skills/
+.qwen/
+.env
+*.log
+.DS_Store
+Thumbs.db
+skills-lock.json
