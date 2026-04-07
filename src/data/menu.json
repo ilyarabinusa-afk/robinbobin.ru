@@ -1,0 +1,136 @@
+{
+  "categories": [
+    { "id": "burgers", "name": "Бургеры", "icon": "🍔" },
+    { "id": "shawarma", "name": "Шаурма", "icon": "🌯" },
+    { "id": "snacks", "name": "Закуски", "icon": "🍟" },
+    { "id": "drinks", "name": "Напитки", "icon": "☕" }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "name": "Бургер Робин Бобин",
+      "description": "Фирменный бургер с говяжьей котлетой 150г, сыром чеддер, свежими овощами и фирменным соусом. 350г / 580 ккал",
+      "price": 600,
+      "category": "burgers",
+      "image": "/images/menu/burger-robin-bobin.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Бургер Классик",
+      "description": "Классический бургер с говяжьей котлетой 120г, сыром, листьями салата и томатами. 300г / 480 ккал",
+      "price": 550,
+      "category": "burgers",
+      "image": "/images/menu/burger-classic.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Шаурма Классическая",
+      "description": "Куриное филе на гриле, свежие овощи, соус чесночный в лаваше. 350г / 520 ккал",
+      "price": 380,
+      "category": "shawarma",
+      "image": "/images/menu/shawarma-classic.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Шаурма Двойная",
+      "description": "Двойная порция куриного филе, овощи, сырный и чесночный соусы в лаваше. 500г / 740 ккал",
+      "price": 530,
+      "category": "shawarma",
+      "image": "/images/menu/shawarma-double.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Хот-дог Робин-Бобин",
+      "description": "Фирменный хот-дог с сосиской, горчицей, кетчупом и маринованным огурцом. 250г / 420 ккал",
+      "price": 220,
+      "category": "snacks",
+      "image": "/images/menu/hotdog.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Картофель фри",
+      "description": "Хрустящий картофель фри из свежего картофеля. 150г / 340 ккал",
+      "price": 120,
+      "category": "snacks",
+      "image": "/images/menu/fries.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Снекбокс",
+      "description": "Набор снеков в коробке — идеально для перекуса. В коробке",
+      "price": 405,
+      "category": "snacks",
+      "image": "/images/menu/snackbox.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Ланчбокс с Фри",
+      "description": "Сытный ланчбокс с картофелем фри. В коробке",
+      "price": 388,
+      "category": "snacks",
+      "image": "/images/menu/lunchbox.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Чикен-Чиз",
+      "description": "Нежное куриное филе с сыром в хрустящем лаваше. В лаваше",
+      "price": 238,
+      "category": "snacks",
+      "image": "/images/menu/chicken-cheese.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Чикен бокс",
+      "description": "Кусочки куриного филе в хрустящей панировке. В коробке",
+      "price": 297,
+      "category": "snacks",
+      "image": "/images/menu/chicken-box.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Чай",
+      "description": "Чай чёрный/зелёный. 300мл / 5 ккал",
+      "price": 80,
+      "category": "drinks",
+      "image": "/images/menu/tea.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Кофе",
+      "description": "Кофе свежесваренный американо. 200мл / 10 ккал",
+      "price": 120,
+      "category": "drinks",
+      "image": "/images/menu/coffee.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Морс ягодный",
+      "description": "Домашний морс из лесных ягод. 300мл / 90 ккал",
+      "price": 100,
+      "category": "drinks",
+      "image": "/images/menu/mors.jpg"
+    }
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "address": "Проспект Победы, 160",
+      "city": "Челябинск"
+    },
+    {
+      "id": 2,
+      "address": "Проспект Ленина, 69/3",
+      "city": "Челябинск"
+    },
+    {
+      "id": 3,
+      "address": "Университетская набережная, 62",
+      "city": "Челябинск"
+    }
+  ],
+  "contacts": {
+    "email": "order@robinbobin.ru",
+    "telegram": "https://t.me/robinbobin_chel",
+    "telegramAdminChatId": "183921686"
+  }
+}
