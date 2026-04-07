@@ -4,9 +4,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
-            <span className="text-2xl text-white" style={{ fontFamily: '"Boogaloo", cursive' }}>
-              робин<span className="text-green">•</span>бобин
-            </span>
+            <img src="/images/logo.png" alt="Робин Бобин" className="h-10 brightness-0 invert" />
             <p className="text-sm mt-2">Вкусно. Быстро. По-домашнему!</p>
           </div>
 
