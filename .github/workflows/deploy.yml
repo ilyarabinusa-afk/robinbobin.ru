@@ -15,7 +15,7 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - run: npm ci
+      - run: npm install
       - run: npx vite build
 
       - name: Deploy to Beget via FTP
