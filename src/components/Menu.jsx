@@ -65,27 +65,17 @@ export default function Menu({ onAddItem }) {
 }
 
 function MenuCard({ item, onAdd }) {
-  const [imgLoaded, setImgLoaded] = useState(false)
   const imgSrc = FOOD_IMAGES[item.name]
 
   return (
     <div className="menu-card group bg-surface rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2">
-      {/* Image with overlay on hover */}
-      <div className="aspect-[4/3] overflow-hidden bg-yellow/10 relative">
-        {imgSrc && (
-          <img
-            src={imgSrc}
-            alt={item.name}
-            loading="lazy"
-            onLoad={() => setImgLoaded(true)}
-            className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
-          />
-        )}
-        {!imgLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center text-5xl animate-pulse">
-            {item.category === 'burgers' ? '🍔' : item.category === 'shawarma' ? '🌯' : item.category === 'snacks' ? '🍟' : '☕'}
-          </div>
-        )}
+      {/* Image — always visible, no opacity trick */}
+      <div className="aspect-[4/3] overflow-hidden bg-accent/5 relative">
+        <img
+          src={imgSrc}
+          alt={item.name}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        />
 
         {/* Hover overlay with composition */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col justify-end p-4">
