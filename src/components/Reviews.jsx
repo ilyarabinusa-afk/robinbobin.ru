@@ -47,9 +47,10 @@ export default function Reviews() {
                   <div className="w-9 h-9 rounded-full bg-accent/10 flex items-center justify-center font-heading font-bold text-accent text-sm">
                     {review.name.charAt(0)}
                   </div>
-                  <span className="font-semibold text-sm text-primary">
-                    {review.name}
-                  </span>
+                  <div>
+                    <span className="font-semibold text-sm text-primary block">{review.name}</span>
+                    {review.date && <span className="text-xs text-secondary">{review.date}</span>}
+                  </div>
                 </div>
                 <StarRating rating={review.rating} />
               </div>

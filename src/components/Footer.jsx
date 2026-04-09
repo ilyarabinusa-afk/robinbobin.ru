@@ -34,8 +34,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 text-center text-xs text-white/40">
-          © {new Date().getFullYear()} Робин Бобин. Все права защищены.
+        <div className="border-t border-white/10 pt-6 text-center text-xs text-white/40 space-y-1">
+          <p>© 2020–{new Date().getFullYear()} Робин Бобин. Все права защищены.</p>
+          <p>«Робин Бобин» — зарегистрированный товарный знак.</p>
         </div>
       </div>
     </footer>

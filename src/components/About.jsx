@@ -42,6 +42,7 @@ export default function About() {
                   onError={(e) => { e.target.style.display = 'none' }}
                 />
                 <p className="font-heading font-bold text-lg text-accent">3 точки в Челябинске</p>
+                <p className="text-sm text-secondary">Кормим с 2020 года</p>
               </div>
             </div>
           </div>

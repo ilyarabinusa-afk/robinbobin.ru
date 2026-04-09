@@ -24,14 +24,7 @@ function App() {
     async function initGsap() {
       const gsap = (await import('gsap')).default
 
-      // Hero entrance — dramatic staggered reveal
-      const heroTl = gsap.timeline({ delay: 0.2 })
-      heroTl
-        .from('.hero-blob', { scale: 0, opacity: 0, duration: 1.5, stagger: 0.2, ease: 'power2.out' })
-        .from('.hero-logo', { y: -100, opacity: 0, duration: 1.2, ease: 'back.out(1.7)' }, 0.3)
-        .from('.hero-float', { opacity: 0, scale: 0, duration: 0.8, stagger: 0.1, ease: 'back.out(2)' }, 0.6)
-        .from('.hero-tagline', { y: 40, opacity: 0, duration: 0.7, stagger: 0.2, ease: 'power3.out' }, '-=0.5')
-        .from('.hero-cta', { y: 30, opacity: 0, duration: 0.6, stagger: 0.15, ease: 'back.out(1.5)' }, '-=0.3')
+      // Hero — only continuous animations via GSAP (entrance via CSS @keyframes)
 
       // Floating food icons — continuous slow movement
       gsap.utils.toArray('.hero-float').forEach((el, i) => {
