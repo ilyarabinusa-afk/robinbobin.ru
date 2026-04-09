@@ -8,3 +8,16 @@ dist/
 .DS_Store
 Thumbs.db
 skills-lock.json
+
+# Screenshots and test scripts
+screenshot-*.png
+audit-*.png
+da-*.png
+full-*.png
+compare-*.png
+snacks-all.png
+preview*.png
+drink*.png
+coffee-preview.png
+*.mjs
+!screenshot.mjs

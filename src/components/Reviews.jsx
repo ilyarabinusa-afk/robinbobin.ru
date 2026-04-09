@@ -38,8 +38,8 @@ export default function Reviews() {
           {reviews.map((review, i) => (
             <div
               key={review.id}
-              className={`review-card rounded-2xl p-5 md:p-6 border transition-shadow duration-300 hover:shadow-card-hover ${
-                i === 0 ? 'bg-accent/5 border-accent/20' : 'bg-surface border-primary/5'
+              className={`review-card rounded-2xl p-5 md:p-6 border transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 hover:scale-[1.02] cursor-default ${
+                i === 0 ? 'bg-accent/5 border-accent/20 md:col-span-2 lg:col-span-1' : 'bg-surface border-primary/5'
               }`}
             >
               <div className="flex items-center justify-between mb-3">

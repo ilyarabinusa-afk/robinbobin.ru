@@ -103,7 +103,7 @@ function App() {
         })
       }, { threshold: 0.1 })
 
-      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => observer.observe(el))
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-rotate').forEach(el => observer.observe(el))
     }
 
     // Mark elements for reveal
@@ -133,12 +133,24 @@ function App() {
       if (aboutCols[0]) aboutCols[0].classList.add('reveal-left')
       if (aboutCols[1]) aboutCols[1].classList.add('reveal-right')
 
+      // Stat cards
+      document.querySelectorAll('.stat-card').forEach((el, i) => {
+        el.classList.add('reveal')
+        el.style.transitionDelay = `${i * 0.1}s`
+      })
+
       // Dividers — scale pop
       document.querySelectorAll('.food-divider span, .dot-divider > div').forEach((el, i) => {
         el.classList.add('reveal-scale')
         el.style.setProperty('--i', i)
         el.style.transitionDelay = `${i * 0.08}s`
       })
+
+      // Map — rotate in
+      const mapEl = document.querySelector('iframe[title]')
+      if (mapEl) {
+        mapEl.parentElement.classList.add('reveal-rotate')
+      }
     }
 
     markRevealElements()

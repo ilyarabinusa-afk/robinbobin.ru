@@ -19,19 +19,20 @@ export default function OrderModal({ items, totalPrice, isOpen, onClose, onSucce
 
     setSending(true)
 
-    const orderText = items.map(i => `${i.name} x${i.qty} — ${i.price * i.qty}₽`).join('\n')
-    const message = `🍔 Новый заказ!\n\n${orderText}\n\n💰 Итого: ${totalPrice}₽\n👤 ${form.name}\n📞 ${form.phone}\n📍 ${form.location}`
-
     try {
-      // Send to Telegram
-      const botToken = '8212507941:AAHlJx98g697MbJ0x4CnNQseMIZZeLOUVA8'
-      const chatId = '183921686'
-      await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      const resp = await fetch('/api/order.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'HTML' }),
+        body: JSON.stringify({
+          name: form.name.trim(),
+          phone: form.phone.trim(),
+          location: form.location,
+          total: totalPrice,
+          items: items.map(i => ({ name: i.name, price: i.price, qty: i.qty })),
+        }),
       })
 
+      if (!resp.ok) throw new Error('Server error')
       onSuccess()
     } catch {
       setError('Не удалось отправить заказ. Попробуйте ещё раз.')

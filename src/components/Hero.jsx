@@ -4,14 +4,14 @@ export default function Hero() {
       {/* Background — warm gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-yellow/20 via-accent/5 to-background" />
 
-      {/* Floating food icons */}
+      {/* Floating food icons — large and vivid */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <span className="hero-float absolute text-5xl md:text-7xl top-[12%] left-[6%] opacity-60">🍔</span>
-        <span className="hero-float absolute text-4xl md:text-6xl top-[18%] right-[8%] opacity-50">🌯</span>
-        <span className="hero-float absolute text-5xl md:text-7xl bottom-[22%] left-[10%] opacity-50">🍟</span>
-        <span className="hero-float absolute text-4xl md:text-6xl bottom-[18%] right-[6%] opacity-60">☕</span>
-        <span className="hero-float absolute text-3xl md:text-5xl top-[40%] left-[2%] opacity-40">🌶️</span>
-        <span className="hero-float absolute text-3xl md:text-5xl top-[8%] right-[22%] opacity-40">🧀</span>
+        <span className="hero-float absolute text-6xl md:text-8xl lg:text-9xl top-[10%] left-[5%] opacity-70">🍔</span>
+        <span className="hero-float absolute text-5xl md:text-7xl lg:text-8xl top-[15%] right-[6%] opacity-60">🌯</span>
+        <span className="hero-float absolute text-6xl md:text-8xl lg:text-9xl bottom-[20%] left-[8%] opacity-60">🍟</span>
+        <span className="hero-float absolute text-5xl md:text-7xl lg:text-8xl bottom-[15%] right-[5%] opacity-70">☕</span>
+        <span className="hero-float absolute text-4xl md:text-6xl top-[42%] left-[1%] opacity-50">🌶️</span>
+        <span className="hero-float absolute text-4xl md:text-6xl top-[6%] right-[20%] opacity-50">🧀</span>
       </div>
 
       <div className="hero-content relative z-10 text-center px-4 md:px-8 max-w-4xl mx-auto">

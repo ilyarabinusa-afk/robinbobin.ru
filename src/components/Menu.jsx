@@ -52,8 +52,10 @@ export default function Menu({ onAddItem }) {
 
         <div className={`grid gap-4 md:gap-6 ${
           filteredItems.length <= 2
-            ? 'grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto'
-            : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+            ? 'grid-cols-1 sm:grid-cols-2 max-w-4xl mx-auto'
+            : filteredItems.length <= 3
+              ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto'
+              : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
         }`}>
           {filteredItems.map((item, i) => (
             <MenuCard key={item.id} item={item} onAdd={onAddItem} index={i} />
