@@ -10,6 +10,7 @@ import Cart from './components/Cart'
 import OrderModal from './components/OrderModal'
 import OrderSuccess from './components/OrderSuccess'
 import Footer from './components/Footer'
+import { WaveDivider, FoodDivider, DotDivider } from './components/SectionDivider'
 
 function App() {
   const cart = useCart()
@@ -113,9 +114,14 @@ function App() {
 
       <main>
         <Hero />
+        <FoodDivider />
         <Menu onAddItem={cart.addItem} />
+        <DotDivider />
         <About />
+        <WaveDivider color="var(--color-surface)" />
         <Reviews />
+        <WaveDivider color="var(--color-background)" flip />
+        <DotDivider />
         <Contacts />
       </main>
 

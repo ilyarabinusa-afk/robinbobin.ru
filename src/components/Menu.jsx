@@ -6,11 +6,11 @@ const FOOD_IMAGES = {
   'Бургер Классик': 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&h=450&fit=crop',
   'Шаурма Классическая': 'https://images.unsplash.com/photo-1561651823-34feb02250e4?w=600&h=450&fit=crop',
   'Шаурма Двойная': 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=600&h=450&fit=crop',
+  'Чикен-Чиз': 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=600&h=450&fit=crop&q=80',
   'Хот-дог Робин-Бобин': 'https://images.unsplash.com/photo-1612392166886-ee8475b03af2?w=600&h=450&fit=crop',
   'Картофель фри': 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&h=450&fit=crop',
   'Снекбокс': 'https://images.unsplash.com/photo-1606755456206-b25206cde27e?w=600&h=450&fit=crop',
   'Ланчбокс с Фри': 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&h=450&fit=crop',
-  'Чикен-Чиз': 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=600&h=450&fit=crop&q=80',
   'Чикен бокс': 'https://images.unsplash.com/photo-1562967915-92ae0c320a01?w=600&h=450&fit=crop',
   'Чай': 'https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?w=600&h=450&fit=crop',
   'Кофе': 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=450&fit=crop',
@@ -64,15 +64,13 @@ export default function Menu({ onAddItem }) {
   )
 }
 
-function MenuCard({ item, onAdd, index }) {
+function MenuCard({ item, onAdd }) {
   const [imgLoaded, setImgLoaded] = useState(false)
   const imgSrc = FOOD_IMAGES[item.name]
 
   return (
-    <div
-      className="menu-card group bg-surface rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2"
-      style={{ transitionDelay: `${index * 50}ms` }}
-    >
+    <div className="menu-card group bg-surface rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2">
+      {/* Image with overlay on hover */}
       <div className="aspect-[4/3] overflow-hidden bg-yellow/10 relative">
         {imgSrc && (
           <img
@@ -88,16 +86,33 @@ function MenuCard({ item, onAdd, index }) {
             {item.category === 'burgers' ? '🍔' : item.category === 'shawarma' ? '🌯' : item.category === 'snacks' ? '🍟' : '☕'}
           </div>
         )}
-        {/* Hover overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+        {/* Hover overlay with composition */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex flex-col justify-end p-4">
+          <p className="text-white/90 text-xs leading-relaxed transform translate-y-4 group-hover:translate-y-0 transition-transform duration-400 delay-75">
+            <span className="font-semibold text-yellow">Состав: </span>
+            {item.composition}
+          </p>
+        </div>
+
+        {/* Weight + Calories badge */}
+        <div className="absolute top-3 right-3 flex gap-1.5">
+          <span className="bg-black/60 backdrop-blur-sm text-white text-[10px] font-semibold px-2 py-1 rounded-full">
+            {item.weight}
+          </span>
+          <span className="bg-accent/90 backdrop-blur-sm text-white text-[10px] font-semibold px-2 py-1 rounded-full">
+            {item.calories}
+          </span>
+        </div>
       </div>
 
+      {/* Info */}
       <div className="p-4">
-        <h3 className="font-heading font-bold text-lg text-primary mb-1 group-hover:text-accent transition-colors duration-200">
+        <h3 className="font-heading font-bold text-lg text-primary mb-0.5 group-hover:text-accent transition-colors duration-200">
           {item.name}
         </h3>
-        <p className="text-sm text-secondary mb-3 line-clamp-2">
-          {item.description}
+        <p className="text-sm text-secondary mb-3 line-clamp-2 italic">
+          {item.tagline}
         </p>
         <div className="flex items-center justify-between">
           <span className="font-heading font-bold text-xl text-accent">

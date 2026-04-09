@@ -23,7 +23,7 @@ function StarRating({ rating }) {
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="py-16 md:py-24 px-4 md:px-8">
+    <section id="reviews" className="py-16 md:py-24 px-4 md:px-8 bg-surface">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="section-title font-heading font-extrabold text-3xl md:text-5xl text-primary mb-3">
