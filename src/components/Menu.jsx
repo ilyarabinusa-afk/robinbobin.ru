@@ -3,17 +3,17 @@ import menuData from '../data/menu.json'
 
 const FOOD_IMAGES = {
   'Бургер Робин Бобин': 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=450&fit=crop',
-  'Бургер Классик': 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&h=450&fit=crop',
+  'Бургер Классик': 'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=600&h=450&fit=crop',
   'Шаурма Классическая': 'https://images.unsplash.com/photo-1561651823-34feb02250e4?w=600&h=450&fit=crop',
   'Шаурма Двойная': 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=600&h=450&fit=crop',
-  'Чикен-Чиз': 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=600&h=450&fit=crop&q=80',
+  'Чикен-Чиз': 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?w=600&h=450&fit=crop',
   'Хот-дог Робин-Бобин': 'https://images.unsplash.com/photo-1612392166886-ee8475b03af2?w=600&h=450&fit=crop',
   'Картофель фри': 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&h=450&fit=crop',
-  'Снекбокс': 'https://images.unsplash.com/photo-1606755456206-b25206cde27e?w=600&h=450&fit=crop',
-  'Ланчбокс с Фри': 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&h=450&fit=crop',
-  'Чикен бокс': 'https://images.unsplash.com/photo-1562967915-92ae0c320a01?w=600&h=450&fit=crop',
+  'Снекбокс': 'https://images.unsplash.com/photo-1585325701956-60dd9c8553bc?w=600&h=450&fit=crop',
+  'Ланчбокс с Фри': 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&h=450&fit=crop',
+  'Чикен бокс': 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&h=450&fit=crop&q=90',
   'Чай': 'https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?w=600&h=450&fit=crop',
-  'Кофе': 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&h=450&fit=crop',
+  'Кофе': 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=600&h=450&fit=crop',
   'Морс ягодный': 'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=600&h=450&fit=crop',
 }
 
