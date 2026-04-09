@@ -1,0 +1,29 @@
+name: Deploy to Beget
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+      - run: npx vite build
+
+      - name: Deploy to Beget via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ilyara3j.beget.tech
+          username: ilyara3j
+          password: ${{ secrets.BEGET_FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: robinbobin.ru/public_html/
+          dangerous-clean-slate: true
