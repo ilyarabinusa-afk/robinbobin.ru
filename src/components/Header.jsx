@@ -14,7 +14,7 @@ export default function Header({ totalItems, onCartClick }) {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-header">
       <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
         <a href="#">
-          <img src="/images/logo.png" alt="Робин Бобин" className="h-10" />
+          <img src="/images/logo.png" alt="Робин Бобин" className="h-8 md:h-12" />
         </a>
 
         <nav className="hidden md:flex gap-6">

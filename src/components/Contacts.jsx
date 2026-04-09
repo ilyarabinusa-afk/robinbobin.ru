@@ -15,24 +15,26 @@ export default function Contacts() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-10">
           {locations.map(loc => (
             <div
               key={loc.id}
-              className="contact-card bg-surface rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-shadow duration-300 text-center"
+              className="contact-card bg-surface rounded-2xl p-5 border border-accent/10 hover:border-accent/30 hover:shadow-card-hover transition-all duration-300 flex items-center gap-4"
             >
-              <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent">
+              <div className="w-11 h-11 bg-accent/10 rounded-xl flex-shrink-0 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                   <circle cx="12" cy="10" r="3"/>
                 </svg>
               </div>
-              <h3 className="font-heading font-bold text-lg text-primary mb-1">
-                {loc.address}
-              </h3>
-              <p className="text-secondary text-sm">
-                г. {loc.city}
-              </p>
+              <div>
+                <h3 className="font-heading font-bold text-base text-primary">
+                  {loc.address}
+                </h3>
+                <p className="text-secondary text-sm">
+                  г. {loc.city}
+                </p>
+              </div>
             </div>
           ))}
         </div>

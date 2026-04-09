@@ -1,15 +1,16 @@
 export default function About() {
   return (
-    <section id="about" className="py-16 md:py-24 px-4 md:px-8">
+    <section id="about" className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-br from-yellow/10 via-background to-accent/5">
       <div className="max-w-7xl mx-auto">
+        <h2 className="section-title font-heading font-extrabold text-3xl md:text-5xl text-primary mb-10 text-center">
+          О нас
+        </h2>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-          <div className="order-2 md:order-1">
-            <h2 className="section-title font-heading font-extrabold text-3xl md:text-5xl text-primary mb-6">
-              О нас
-            </h2>
-            <div className="space-y-4 text-secondary text-base md:text-lg leading-relaxed">
+          <div>
+            <div className="space-y-5 text-primary/80 text-base md:text-lg leading-relaxed">
               <p>
-                <strong className="text-primary">Робин Бобин</strong> — это не просто кафе быстрого питания.
+                <strong className="text-primary text-xl font-heading">Робин Бобин</strong> — это не просто кафе быстрого питания.
                 Это место, где каждый бургер делается с душой, шаурма заворачивается
                 с любовью, а картошка фри хрустит так, как надо.
               </p>
@@ -24,26 +25,24 @@ export default function About() {
               </p>
             </div>
           </div>
-          <div className="order-1 md:order-2">
-            <div className="aspect-square rounded-3xl bg-gradient-to-br from-accent/5 via-yellow/15 to-green/5 flex flex-col items-center justify-center overflow-hidden p-8">
-              {/* Mascot */}
-              <img
-                src="/images/mascot.png"
-                alt="Маскот Робин Бобин"
-                className="h-40 md:h-56 w-auto mb-4 drop-shadow-lg"
-                onError={(e) => {
-                  e.target.style.display = 'none'
-                }}
-              />
-              {/* Logo */}
-              <img
-                src="/images/logo.png"
-                alt="Робин Бобин"
-                className="h-12 md:h-16 w-auto"
-                onError={(e) => {
-                  e.target.outerHTML = '<p class="font-heading font-bold text-2xl text-primary/40">3 точки в Челябинске</p>'
-                }}
-              />
+          <div className="flex justify-center">
+            <div className="relative">
+              <div className="absolute -inset-6 bg-accent/5 rounded-full blur-2xl" />
+              <div className="relative flex flex-col items-center gap-4">
+                <img
+                  src="/images/mascot.png"
+                  alt="Маскот Робин Бобин"
+                  className="h-48 md:h-64 lg:h-72 w-auto drop-shadow-xl"
+                  onError={(e) => { e.target.style.display = 'none' }}
+                />
+                <img
+                  src="/images/logo.png"
+                  alt="Робин Бобин"
+                  className="h-10 md:h-14 w-auto"
+                  onError={(e) => { e.target.style.display = 'none' }}
+                />
+                <p className="font-heading font-bold text-lg text-accent">3 точки в Челябинске</p>
+              </div>
             </div>
           </div>
         </div>

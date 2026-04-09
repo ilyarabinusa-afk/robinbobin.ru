@@ -1,10 +1,10 @@
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16 pb-8">
-      {/* Background — bright, no fog */}
+    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20 pb-8">
+      {/* Background — warm gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-yellow/20 via-accent/5 to-background" />
 
-      {/* Floating food icons — visible, not faded */}
+      {/* Floating food icons */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <span className="hero-float absolute text-5xl md:text-7xl top-[12%] left-[6%] opacity-60">🍔</span>
         <span className="hero-float absolute text-4xl md:text-6xl top-[18%] right-[8%] opacity-50">🌯</span>
@@ -15,46 +15,38 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 text-center px-4 md:px-8 max-w-4xl mx-auto">
-        {/* Logo image if exists, fallback to text */}
-        <div className="hero-logo mb-8">
+        {/* Logo */}
+        <div className="hero-logo mb-4 md:mb-6">
           <img
             src="/images/logo.png"
             alt="Робин Бобин"
-            className="mx-auto h-24 sm:h-32 md:h-40 lg:h-48 w-auto"
+            className="mx-auto h-20 sm:h-28 md:h-36 lg:h-44 w-auto drop-shadow-md"
             onError={(e) => {
               e.target.style.display = 'none'
               e.target.nextElementSibling.style.display = 'block'
             }}
           />
-          <h1
-            className="hidden leading-none"
-          >
+          <h1 className="hidden leading-none">
             <span
               className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-accent inline-block"
-              style={{
-                fontFamily: '"Boogaloo", cursive',
-                WebkitTextStroke: '1.5px #1A1A1A',
-                paintOrder: 'stroke fill',
-              }}
+              style={{ fontFamily: '"Boogaloo", cursive', WebkitTextStroke: '1.5px #1A1A1A', paintOrder: 'stroke fill' }}
             >
-              робин
-              <span className="text-green" style={{ WebkitTextStroke: '1.5px #1A1A1A' }}>•</span>
-              бобин
+              робин<span className="text-green" style={{ WebkitTextStroke: '1.5px #1A1A1A' }}>•</span>бобин
             </span>
           </h1>
         </div>
 
-        {/* Mascot */}
-        <div className="hero-mascot mb-6">
+        {/* Mascot — bigger */}
+        <div className="hero-mascot mb-5">
           <img
             src="/images/mascot.png"
             alt="Маскот Робин Бобин"
-            className="mx-auto h-32 md:h-44 w-auto drop-shadow-lg"
+            className="mx-auto h-36 sm:h-44 md:h-52 lg:h-60 w-auto drop-shadow-xl"
             onError={(e) => { e.target.style.display = 'none' }}
           />
         </div>
 
-        <p className="hero-tagline font-heading font-bold text-2xl md:text-4xl text-primary mb-3">
+        <p className="hero-tagline font-heading font-bold text-2xl md:text-4xl text-primary mb-2">
           Вкусно. Быстро. По-домашнему!
         </p>
 
@@ -62,10 +54,10 @@ export default function Hero() {
           Бургеры, шаурма и закуски с душой. Закажи на самовывоз — заберёшь горячим!
         </p>
 
-        <div className="hero-cta flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="hero-cta flex flex-col sm:flex-row gap-3 justify-center">
           <a
             href="#menu"
-            className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-accent text-white font-heading font-bold text-base md:text-lg uppercase tracking-wider rounded-full hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center justify-center gap-3 px-10 py-4 bg-accent text-white font-heading font-bold text-base md:text-lg uppercase tracking-wider rounded-full hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
           >
             Смотреть меню
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -74,7 +66,7 @@ export default function Hero() {
           </a>
           <a
             href="#contacts"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-primary/20 text-primary font-heading font-bold text-base md:text-lg rounded-full hover:border-accent hover:text-accent transition-all duration-300"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-accent/40 text-accent font-heading font-bold text-base md:text-lg rounded-full hover:bg-accent hover:text-white transition-all duration-300"
           >
             📍 Наши адреса
           </a>
