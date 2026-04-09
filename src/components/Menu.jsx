@@ -7,14 +7,14 @@ const FOOD_IMAGES = {
   'Шаурма Классическая': 'https://images.unsplash.com/photo-1561651823-34feb02250e4?w=600&h=450&fit=crop',
   'Шаурма Двойная': 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=600&h=450&fit=crop',
   'Чикен-Чиз': 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?w=600&h=450&fit=crop',
-  'Хот-дог Робин-Бобин': 'https://images.unsplash.com/photo-1612392166886-ee8475b03af2?w=600&h=450&fit=crop',
+  'Хот-дог Робин-Бобин': '/images/menu/hotdog.jpg',
   'Картофель фри': 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&h=450&fit=crop',
   'Снекбокс': 'https://images.unsplash.com/photo-1585325701956-60dd9c8553bc?w=600&h=450&fit=crop',
   'Ланчбокс с Фри': 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&h=450&fit=crop',
   'Чикен бокс': 'https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&h=450&fit=crop&q=90',
   'Чай': 'https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?w=600&h=450&fit=crop',
-  'Кофе': 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=600&h=450&fit=crop',
-  'Морс ягодный': 'https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?w=600&h=450&fit=crop',
+  'Кофе': 'https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=600&h=450&fit=crop',
+  'Морс ягодный': 'https://images.pexels.com/photos/5124179/pexels-photo-5124179.jpeg?w=600&h=450&fit=crop',
 }
 
 export default function Menu({ onAddItem }) {
