@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20 pb-8">
+    <section className="hero-section relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20 pb-8">
       {/* Background — warm gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-yellow/20 via-accent/5 to-background" />
 
@@ -14,7 +14,7 @@ export default function Hero() {
         <span className="hero-float absolute text-3xl md:text-5xl top-[8%] right-[22%] opacity-40">🧀</span>
       </div>
 
-      <div className="relative z-10 text-center px-4 md:px-8 max-w-4xl mx-auto">
+      <div className="hero-content relative z-10 text-center px-4 md:px-8 max-w-4xl mx-auto">
         {/* Logo */}
         <div className="hero-logo mb-4 md:mb-6">
           <img
