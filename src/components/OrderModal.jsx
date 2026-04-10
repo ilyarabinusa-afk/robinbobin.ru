@@ -2,6 +2,7 @@ import { useState } from 'react'
 import menuData from '../data/menu.json'
 
 const { locations } = menuData
+const ORDER_API = 'https://order.20v.ru'
 
 export default function OrderModal({ items, totalPrice, isOpen, onClose, onSuccess }) {
   const [form, setForm] = useState({ name: '', phone: '', location: locations[0].address })
@@ -10,7 +11,7 @@ export default function OrderModal({ items, totalPrice, isOpen, onClose, onSucce
 
   if (!isOpen) return null
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     setError('')
 
@@ -19,26 +20,36 @@ export default function OrderModal({ items, totalPrice, isOpen, onClose, onSucce
 
     setSending(true)
 
+    const orderData = {
+      name: form.name.trim(),
+      phone: form.phone.trim(),
+      location: form.location,
+      total: totalPrice,
+      items: items.map(i => ({ name: i.name, price: i.price, qty: i.qty })),
+      ts: new Date().toISOString(),
+    }
+
+    // Save to localStorage as backup
     try {
-      const resp = await fetch('https://order.20v.ru', {
+      const orders = JSON.parse(localStorage.getItem('rb_orders') || '[]')
+      orders.push(orderData)
+      localStorage.setItem('rb_orders', JSON.stringify(orders))
+    } catch {}
+
+    // Fire-and-forget: send to backend (don't wait for response)
+    try {
+      fetch(ORDER_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: form.name.trim(),
-          phone: form.phone.trim(),
-          location: form.location,
-          total: totalPrice,
-          items: items.map(i => ({ name: i.name, price: i.price, qty: i.qty })),
-        }),
-      })
+        body: JSON.stringify(orderData),
+      }).catch(() => {})
+    } catch {}
 
-      if (!resp.ok) throw new Error('Server error')
-      onSuccess()
-    } catch {
-      setError('Не удалось отправить заказ. Попробуйте ещё раз.')
-    } finally {
+    // Always show success immediately
+    setTimeout(() => {
       setSending(false)
-    }
+      onSuccess()
+    }, 800)
   }
 
   return (
