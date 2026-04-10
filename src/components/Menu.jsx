@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import menuData from '../data/menu.json'
 
 const FOOD_IMAGES = {
@@ -68,10 +68,34 @@ export default function Menu({ onAddItem }) {
 
 function MenuCard({ item, onAdd }) {
   const imgSrc = FOOD_IMAGES[item.name]
+  const btnRef = useRef(null)
+  const [adding, setAdding] = useState(false)
+
+  const handleAdd = useCallback((e) => {
+    onAdd(item)
+    setAdding(true)
+
+    // Fly emoji animation
+    const btn = btnRef.current
+    if (btn) {
+      const rect = btn.getBoundingClientRect()
+      const fly = document.createElement('div')
+      fly.textContent = item.category === 'burgers' ? '🍔' : item.category === 'shawarma' ? '🌯' : item.category === 'snacks' ? '🍟' : '☕'
+      fly.className = 'fly-item'
+      fly.style.left = rect.left + rect.width / 2 + 'px'
+      fly.style.top = rect.top + 'px'
+      fly.style.fontSize = '28px'
+      fly.style.setProperty('--fly-x', '0px')
+      fly.style.setProperty('--fly-y', '-120px')
+      document.body.appendChild(fly)
+      setTimeout(() => fly.remove(), 700)
+    }
+
+    setTimeout(() => setAdding(false), 500)
+  }, [item, onAdd])
 
   return (
     <div className="menu-card group bg-surface rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2">
-      {/* Image — always visible, no opacity trick */}
       <div className="aspect-[4/3] overflow-hidden bg-accent/5 relative">
         <img
           src={imgSrc}
@@ -113,13 +137,24 @@ function MenuCard({ item, onAdd }) {
             {item.price} ₽
           </span>
           <button
-            onClick={() => onAdd(item)}
-            className="w-10 h-10 bg-accent text-white rounded-full flex items-center justify-center hover:scale-110 active:scale-90 transition-transform shadow-md focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            ref={btnRef}
+            onClick={handleAdd}
+            className={`w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-all duration-300 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
+              adding
+                ? 'bg-green text-white scale-110'
+                : 'bg-accent text-white hover:scale-110 active:scale-90'
+            }`}
             aria-label={`Добавить ${item.name} в корзину`}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-            </svg>
+            {adding ? (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            )}
           </button>
         </div>
       </div>

@@ -11,6 +11,7 @@ import OrderModal from './components/OrderModal'
 import OrderSuccess from './components/OrderSuccess'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import FloatingCart from './components/FloatingCart'
 import { WaveDivider, FoodDivider, DotDivider } from './components/SectionDivider'
 
 function App() {
@@ -198,6 +199,7 @@ function App() {
       </main>
 
       <Footer />
+      <FloatingCart totalItems={cart.totalItems} totalPrice={cart.totalPrice} onCartClick={() => setCartOpen(true)} />
       <ScrollToTop />
 
       <Cart
