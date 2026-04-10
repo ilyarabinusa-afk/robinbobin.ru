@@ -20,7 +20,7 @@ export default function OrderModal({ items, totalPrice, isOpen, onClose, onSucce
     setSending(true)
 
     try {
-      const resp = await fetch('/api/order.php', {
+      const resp = await fetch('https://api.robinbobin.20v.ru', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

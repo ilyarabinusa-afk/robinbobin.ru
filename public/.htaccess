@@ -17,13 +17,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !^/api/
 RewriteRule . /index.html [L]
 
-# CORS for API
-<FilesMatch "\.php$">
-  Header set Access-Control-Allow-Origin "*"
-  Header set Access-Control-Allow-Methods "POST, OPTIONS"
-  Header set Access-Control-Allow-Headers "Content-Type"
-</FilesMatch>
-
 # Caching
 <IfModule mod_expires.c>
   ExpiresActive On
