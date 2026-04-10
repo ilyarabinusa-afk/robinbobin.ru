@@ -1,17 +1,28 @@
 RewriteEngine On
 
-# Force HTTPS
+# Skip API from rewrites
+RewriteRule ^api/ - [L]
+
+# Force HTTPS (307 preserves POST method)
 RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=307]
 
 # Force www to non-www
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 
-# SPA fallback — send all requests to index.html
+# SPA fallback — only for non-file, non-directory, non-API
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/api/
 RewriteRule . /index.html [L]
+
+# CORS for API
+<FilesMatch "\.php$">
+  Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Methods "POST, OPTIONS"
+  Header set Access-Control-Allow-Headers "Content-Type"
+</FilesMatch>
 
 # Caching
 <IfModule mod_expires.c>

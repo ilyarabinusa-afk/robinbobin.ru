@@ -27,3 +27,22 @@ jobs:
           local-dir: ./dist/
           server-dir: robinbobin.ru/public_html/
           dangerous-clean-slate: true
+
+      - name: Fix file permissions
+        run: |
+          sudo apt-get install -y lftp > /dev/null 2>&1
+          lftp -u "ilyara3j,${{ secrets.BEGET_FTP_PASSWORD }}" -e "
+            set ftp:ssl-allow no
+            cd robinbobin.ru/public_html
+            chmod 755 .
+            chmod 755 assets
+            chmod 755 images
+            chmod 755 images/menu
+            chmod 755 api
+            glob -a chmod 644 *
+            glob -a chmod 644 assets/*
+            glob -a chmod 644 images/*
+            glob -a chmod 644 images/menu/*
+            glob -a chmod 644 api/*
+            quit
+          " ftp://ilyara3j.beget.tech
